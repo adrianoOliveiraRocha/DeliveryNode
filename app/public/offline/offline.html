@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline</title>
+  <style>
+    .container {
+      color: white;
+      background-color: #254889;
+      text-align:       center;
+      opacity:          0.9;
+      width:            100%;
+      height:           100%; 
+      z-index:          10;
+      top:              0; 
+      left:             0; 
+      position:         fixed;       
+    }
+
+    .button {
+      text-align: center;
+      font-size: 150%;
+      background-color: #25d366;
+      color: white;
+      padding: 2%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>OOPS!</h1>
+    <h2>Você está Offline :-(</h2>
+    <hr>
+    <button class="button"
+      onclick="return window.location.href='/'">Tentar Novamente</button>
+    <hr>
+  </div>
+</body>
+</html>

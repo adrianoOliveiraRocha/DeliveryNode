@@ -1,0 +1,110 @@
+<div class="container">
+  <strong>Olá  <%=user.name%> :)</strong>
+
+  <div class="container text-center" id='mistakes'></div>
+
+  <hr>
+  <form action="/send-order" id="formDelivaryData" method="POST">
+
+    <h5 class="text-center">Forma de Pagamanto</h5>
+
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="paymentMethod"
+        onchange="Order.paymentChoice('money');" value="money">Dinheiro
+      </label>
+    </div>
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="paymentMethod" 
+        onchange="Order.paymentChoice('card')" value="card">Cartão
+      </label>
+    </div>
+
+    <hr>
+
+    <div id="setPaymentMethod"></div>
+    
+    <h5 class="text-center">Endereço de Entrega</h5>
+
+    <div class="row">
+      <div class="col-sm-10">
+        <label for="_number" class="c2">
+          <strong>
+            Use o endereço cadastrado 
+            <input type="checkbox" name="useMyAddress" id="useMyAddress" 
+              onchange="ShopingCart.useMyAddress(this.checked);">
+          </strong>        
+        </label>
+      </div>    
+    </div>
+    <hr>
+    <div class="row">
+      
+      <div class="col-sm-3">
+        <label for="street" class="form-control text-center c2">Rua</label>
+      </div>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="street" 
+          id="street" required>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-3">
+        <label for="_number" class="form-control text-center c2">Número</label>
+      </div>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="_number" 
+          id="_number" required>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-3">
+        <label for="neighborhood" class="form-control text-center c2">Bairro</label>
+      </div>
+      <div class="col-sm-9">
+        <select name="neighborhood" id="neighborhood" class="form-control"
+          required>
+          <option value="null">Escolha um bairro</option>
+          <%for(nh of neighborhoods) { %>
+          <option value="<%=nh.id%>"><%=nh.name%></option>
+          <% } %>
+        </select>
+      </div>
+    </div>
+    <hr> 
+    <div class="row">
+      <div class="col-sm-3">
+        <label for="complement" class="form-control text-center c2">Complemento</label>
+      </div>
+      <div class="col-sm-9">
+        <textarea name="complement" class="form-control"
+        id="complement"></textarea>
+      </div>
+    </div>
+    <hr> 
+  </form>
+  <div class="row">
+    <div class="col-sm-3">
+      <button type="button" class="add-cart-button form-control"
+        name="sendMessage" onclick="Order.sendOrder();">
+        Enviar Pedido
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <button type="button" class="add-cart-button form-control"
+        onclick="ShopingCart.showCart();">
+        Carrinho
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <button type="button" class="add-cart-button form-control"
+        onclick="ShopingCart.cancelOrder(event);">
+        Cancelar 
+      </button>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- <style>
+    footer {
+      position: fixed;
+      bottom:0;
+      left:0;
+      right: 0;
+    } -->
+  </style>
+  <script src="./app.js"></script>
+
+  <!-- pwa -->
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="core/images/system-images/icons/apple-icon-120.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
+  <meta name="theme-color" content="#FFE1C4">
+  <style>
+  
+    #enable-banner-install{
+      display: none;
+      margin: 5px;
+    }
+    
+  </style>
+  <title>LMarket</title>
+
+  <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body onload="ShopingCart.verify(); installButton();">
+  <div class="container-fluid">
+    <!-- Navigation -->
+    <%-include('include/nav-bar.ejs')%>
+    <br>
+    <div class="card">
+
+      <div class="card-head">
+        <%include('include/logo.ejs')%>
+      </div>
+
+      <div class="card-body">
+        
+        <button class="btn btn-info" id="enable-banner-install">
+          Instalar
+        </button>
+
+        <br>
+
+        <div class="container c3">
+
+          <h1 class="container text-center c3">Taxa de Entrega</h1>
+          <hr>
+          <table class="table c3">
+            <thead>
+              <tr>
+                <th>Bairro</th><th>Taxa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(nh of neighborhoods) { %>
+              <tr>
+                <td><%=nh.name%></td>
+                <td><%=nh.delivery_fee.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})%></td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+
+
+        </div>
+
+      </div>
+
+      <div class="card-footer text-center">
+        
+        w3software.br@gmail.com
+
+      </div>
+
+    </div>
+
+    <%-include('include/bottom-links.ejs')%>
+
+    <a href="/user-whatsapp-message"" title="Fale Conosco" class="wa-logo">
+      <img src="admin/images/whatsapp.png" alt="offline" width="50px">
+    </a>
+        
+  </div>
+
+  <br>
+
+  <%-include('include/footer.ejs')%>
+
+  <script src="core/core.js"></script>
+
+</body>
+
+</html>

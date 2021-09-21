@@ -1,0 +1,43 @@
+<div class="dropdown for-notification">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-bell"></i>
+    <span class="count bg-danger"><%=Object.keys(orders).length%></span>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="notification">
+    <p class="red">
+      Você tem <%=Object.keys(orders).length%> novos(s) pedido(s)
+    </p>
+    <div style="overflow-y: scroll; max-height: 200px;">
+      <%for(order of orders) { %>
+      <a class="dropdown-item media" 
+        href="#" onclick="Order.orderDetail('<%=order.id%>', '<%=order.user%>')">
+        <i class="fa fa-check"></i>
+        <p><%=order._datetime.toLocaleString('br');%></p>
+      </a>
+    <% } %>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown for-message">
+  <button class="btn btn-secondary dropdown-toggle" type="button"
+    id="message"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="ti-email"></i>
+    <span class="count bg-primary"><%=Object.keys(messages).length%></span>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="message">
+    <p class="red">
+      Você tem <%=Object.keys(messages).length%> mensagens não lidas
+    </p>
+    <div style="overflow-y: scroll; max-height: 200px;">
+      <%for(message of messages) { %>
+      <a class="dropdown-item media" 
+        href="#" onclick="Helper.messageDetails('<%=message.id%>');">
+        <i class="fa fa-check"></i>
+        <p><%=message.name%></p>
+      </a>
+      <% } %>
+    </div>
+  </div>
+</div> <!--/message-->

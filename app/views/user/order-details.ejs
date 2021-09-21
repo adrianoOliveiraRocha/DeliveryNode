@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Detalhes do Pedido</h3></div>
+  <div class="card-body card-block">
+    
+    <table class="table table-bordered table-hover">
+      <tr>
+        <td>Data/Hora do Pedido</td>
+        <td><%=order._datetime.toLocaleString('br')%></td>
+      </tr>
+      <%if(order.money == '0.00') { %>
+      <tr>
+        <td>Cartão</td>
+        <td><%=order.creditcard%></td>
+      </tr>
+      <% } else { %>
+      <tr>
+        <td>Dinheiro</td>
+        <td><%=order.money.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})%></td>
+      </tr>
+      <% } %>
+      <tr>
+        <td>Total</td>
+        <td><%=order.total.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})%></td>
+      </tr>
+      <tr>
+        <td>Taxa de Entrega</td>
+        <td><%=order.delivery_fee.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})%></td>
+      </tr>
+      <%if(order.money != '0.00') { %>
+      <tr>
+        <td>Troco</td>
+        <td><%=(order.money - (order.total + order.delivery_fee)).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})%></td>
+      </tr>
+      <% } %>
+      <tr>
+        <td>Status do Pedido</td>
+        <td>
+          <% if(order.status == 0) { %>
+          <div class="no-fulfilled">Em Andamento</div>
+          <% } else { %>
+            <div class="fulfilled">Finalizado</div>
+          <% } %>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="card-footer">
+    <!-- Button to Open the Modal -->
+    <div class="row">
+      <div class="col-sm-3">
+        <button type="button" class="form-control btn btn-info" 
+          onclick="return document.location.href='/my-orders'">
+          Exibir Todos 
+        </button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+
+

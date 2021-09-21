@@ -1,0 +1,130 @@
+.bg1 {
+  background-color: #254889;
+}
+
+.c1 {
+  /* yellow */
+  color: #ffff00;
+}
+
+.c2 {
+  color: #23ad43;
+}
+
+a.c2:hover {
+  color: #254889;
+}
+
+.c3 {
+  color: #254889;
+}
+
+a.c3:hover {
+  background-color: #254889;
+  color: white;
+  
+}
+
+a.c3:active {
+  background-color: white;
+  color: #23ad43;
+}
+
+.add-cart-button {
+  padding: 6px;
+  background: #254889;
+  color: white;
+}
+
+.nav .nav-pills .nav-item .nav-link .active {
+  background:#254889;
+}
+
+a.add-cart-button:hover {
+  color: yellow;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  padding: 10px;
+  color: #254889;
+  text-align: center;
+}
+
+.myactive {
+  background-color :#254889;
+  color: #f7f312;
+}
+
+.warning {
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #dd4321;
+}
+
+.showPrice {
+  font-size: 35px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #23ad43;
+}
+
+.btn-danger {
+  background-color: #dd4321;
+}
+
+.btn-primary {
+  background-color:#254889;
+}
+
+.btn-primary:hover {
+  background-color:#23ad43;
+}
+
+.btn-warning {
+  background-color: #f7f312;
+}
+
+.wa-logo {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 5%;
+}
+
+.no-fulfilled {
+  color: red;
+}
+
+.fulfilled {
+  color: green;
+}
+
+.wapp-color {
+  color: #075e54;
+}
+
+.btn-wapp-color {
+  background-color: #075e54;
+  color: #fff;
+}
+
+.btn-wapp-color:hover {
+  background-color: #25d366;
+}
+
+.wa-logo {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 5%;
+}

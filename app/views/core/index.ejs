@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <script src="./app.js"></script>
+
+  <!-- pwa -->
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="core/images/system-images/icons/apple-icon-120.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
+  <meta name="theme-color" content="#FFE1C4">
+  <style>
+  
+    #enable-banner-install{
+      display: none;
+      margin: 5px;
+    }
+    
+  </style>
+  <title>LMarket</title>
+
+  <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body onload="ShopingCart.verify(); installButton();">
+  <div class="container-fluid">
+    <!-- Navigation -->
+    <%-include('include/nav-bar.ejs')%>
+    <br>
+    <div class="card">
+
+      <div class="card-head">
+        <%include('include/logo.ejs')%>
+      </div>
+
+      <div class="card-body">
+        
+        <button class="btn btn-info" id="enable-banner-install">
+          Instalar
+        </button>
+
+        <%-include('include/menu.ejs')%>
+
+        <br>
+
+        <%-include('include/carousel.ejs')%>
+
+        <hr>
+        <div class="container">
+          <h3 class="title text-center">
+            <%=currentCategory.name%>
+          </h3>
+          <br>
+          <div class="row" id="products">
+            
+            <% for(product of page) { %>
+            <% if(product.activated == 1) { %>
+            <!-- <%=product.stock_control == 1 && product.quantity > 0%> -->
+            <input type="hidden" id="name_<%=product.id%>" value="<%=product.name%>">
+            <input type="hidden" id="price_<%=product.id%>" value="<%=product.price%>">
+            <input type="hidden" id="stock_<%=product.id%>" value="<%=product.quantity%>">
+            <input type="hidden" id="stockControl_<%=product.id%>" value="<%=product.stock_control%>">
+            <!-- item -->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+                <a href="/product-datail?id=<%=product.id%>">
+                <img class="card-img-top"
+                  src="admin/images/products/<%=product.imageName%>" alt="offline" 
+                  title="Detalhes do product"></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="/product-datail?id=<%=product.id%>"" class="c2"
+                      title="Detalhes do produto"><%=product.name%></a>
+                  </h4>
+                  <h5 class="c3">R$ 
+                    <%=product.price.toFixed(2).toString().replace('.', ',')%></h5>
+                  <div class="card-text text-muted text-truncate">
+                    <%=product.description%></div>
+                </div>
+
+                <div class="card-footer">
+                  
+                  <p>
+                    <% if(product.stock_control == 0) { %>
+                      <button onclick="ShopingCart.insertProduct('<%=product.id%>')"
+                        class="add-cart-button"
+                        id="btnInsert_<%=product.id%>">
+                          Adicionar ao carrinho <i class="fas fa-cart-plus"></i>
+                      </button>
+                    <% } else { %>
+                      <% if(product.quantity > 0) { %>
+                        <button onclick="ShopingCart.insertProduct('<%=product.id%>')"
+                          class="add-cart-button"
+                          id="btnInsert_<%=product.id%>">
+                            Adicionar ao carrinho <i class="fas fa-cart-plus"></i>
+                        </button>
+                      <% } else { %>
+                        <i class="text-danger">Em falta</i>
+                      <% } %>
+                    <% } %>
+                    
+                  </p>                 
+                  
+                </div>
+              </div>
+            </div>
+            <% } %>
+            <!-- end item -->
+            <% } %>
+          
+          </div>
+          <!-- /.row -->
+        </div>
+
+      </div>
+
+      <div class="card-footer text-center">
+        
+        <%-include('include/pagination.ejs')%>
+
+      </div>
+
+    </div>
+
+    <%-include('include/bottom-links.ejs')%>
+
+    <a href="/user-whatsapp-message" title="Fale Conosco" class="wa-logo">
+      <img src="admin/images/whatsapp.png" alt="offline" width="50px">
+    </a>
+        
+  </div>
+
+  <br>
+
+  <%-include('include/footer.ejs')%>
+
+  <script src="core/core.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>LMarket</title>
+
+  <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body onload="ShopingCart.verify();">
+
+  <div class="container-fluid">
+
+    <!-- Navigation -->
+    <%-include('include/nav-bar.ejs')%>
+
+    <br>
+    <div class="card">
+      
+      <div class="card-head">
+        <h2 class="title">Carrinho de Compras</h2>
+      </div>
+
+      <div class="card-body">
+        
+        <div class="container">
+          <% if(products.length > 0) { %>
+          
+          <div class="card c3">
+
+            <div class="card-body">
+              <form action="/get-client-info" id="orderForm" method="POST">
+              <% for(product of products) { %>
+
+                <input type="hidden" id="price_<%=product.id%>" name="price_<%=product.id%>" 
+                  value="<%=product.price%>">
+                <input type="hidden" id="quantity_<%=product.id%>" name="quantity_<%=product.id%>"
+                  value="<%=product.quantity%>">
+                <input type="hidden" id="name_<%=product.id%>" name="name_<%=product.id%>"
+                  value="<%=product.name%>">
+                <input type="hidden" id="stockControl_<%=product.id%>" name="stockControl_<%=product.id%>"
+                  value="<%=product.stockControl%>">
+
+                <h4 class="card-title text-center c3"><%=product.name%></h4>
+
+                <table class="table">
+                  <tr>
+                    <td>
+                      <label for="price">Preço Unitário</label>
+                    </td>
+                    <td>
+                      <input type="text" 
+                      value="<%=parseFloat(product.price).toFixed(2);%>" readonly
+                      class="form-control text-center">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="quantity">Quantidade</label>
+                    </td>
+                    <td>
+                      <input type="number" value="<%=product.quantity%>" 
+                        id="show_quantity_<%=product.id%>"
+                        min="0" 
+                        <% if(product.stockControl==1) { %>
+                          max="<%=product.stock%>"
+                        <% } %>
+                        class="form-control text-center"
+                        onchange="ShopingCart.alterQuantity('<%=product.id%>', this.value);">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="subtotal">Subtotal</label>
+                    </td>
+                    <td>
+                      <input type="text" 
+                        value="<%=parseFloat(product.subTotal).toFixed(2);%>"
+                        id="subTotal_<%=product.id%>"
+                        name="subTotal_<%=product.id%>"
+                        readonly class="form-control text-center">
+                    </td>
+                  </tr>
+                </table>
+                
+                <div class="card-body text-center">
+                  <button class="text-center btn btn-danger"
+                    onclick="ShopingCart.deleteItem('<%=product.id%>', event);">
+                    Deletar Ítem</button>
+                </div>
+
+                <hr>
+              <% } %>
+              </form>
+            </div>
+
+          </div>
+          <% } else { %>
+            <div class="warning">
+              <p>Seu carrinho está vazio :-(</p>
+              
+            </div>
+          <% } %>
+        </div>
+
+        <div class="container">
+          <br>
+          <div class="showPrice">
+            <div id="totalContainer"><%=(products.total).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })%></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer container">
+        
+        <div class="row">
+          <div class="col-sm-3">
+            <button type="submit" class="add-cart-button form-control"
+              onclick="return location.href='/'"
+              id="">
+              Continuar Comprando
+            </button>
+          </div>
+          
+          <% if(products.length > 0) {%>
+          <div class="col-sm-3">
+            <button type="button" class="add-cart-button form-control"
+              onclick="ShopingCart.finalize();">
+              Finalizar
+            </button>
+          </div>
+
+          <div class="col-sm-3">
+            <button type="button" class="add-cart-button form-control"
+              onclick="ShopingCart.cancelOrder(event);">
+              Cancelar
+            </button>
+          </div>
+          <% } %>
+
+        </div>        
+        
+      </div>
+
+    </div>
+
+    <%-include('include/bottom-links.ejs')%>
+
+  </div>
+
+  <br>
+  
+  <%-include('include/footer.ejs')%>
+  
+  <script src="core/core.js"></script>
+  
+</body>
+
+</html>

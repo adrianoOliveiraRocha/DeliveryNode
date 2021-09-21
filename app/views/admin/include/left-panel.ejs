@@ -1,0 +1,134 @@
+<!-- Left Panel -->
+
+<aside id="left-panel" class="left-panel">
+  <nav class="navbar navbar-expand-sm navbar-default">
+
+    <div class="navbar-header">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="/admin">Admin</a>
+      <a class="navbar-brand hidden" href="admin">Ad</a>
+    </div>
+
+    <div id="main-menu" class="main-menu collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <!-- <li class="active">
+          <a href="/admin"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+        </li> -->
+        <!-- <h3 class="menu-title">Menu Principal</h3> -->
+
+        <li class="menu-item-has-children dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+          aria-expanded="false"> <i></i>Categorias</a>
+          <ul class="sub-menu children dropdown-menu">
+              <li><i class="ti-arrow-circle-right"></i><a href="#" onclick="Category.new()">
+                Nova</a></li>
+              <li><i class="ti-arrow-circle-right"></i><a href="/show-categories">Exibir Todas</a></li>              
+          </ul>
+        </li>
+
+        <li class="menu-item-has-children dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+          aria-expanded="false"> <i></i>Produtos</a>
+          <ul class="sub-menu children dropdown-menu">
+            <li><i class="ti-arrow-circle-right"></i><a href="#" onclick="Product.new()">
+              Novo</a></li>
+            <li><i class="ti-arrow-circle-right"></i><a href="/show-products">Exibir Todos</a></li>
+            <li><i class="ti-arrow-circle-right"></i><a href="/low-stoque">Estoque Em Baixa</a></li>              
+          </ul>
+        </li>
+
+        <li class="menu-item-has-children dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+          aria-expanded="false"> <i></i>Bairros</a>
+          <ul class="sub-menu children dropdown-menu">
+              <li><i class="ti-arrow-circle-right"></i><a href="#" onclick="Neighborhood.new()">
+                Novo</a></li>
+              <li><i class="ti-arrow-circle-right"></i><a href="/show-neighborhood">Exibir Todos</a></li>              
+          </ul>
+        </li>
+
+        <h3 class="menu-title"></h3>
+        <li class="menu-item-has-children dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+          aria-expanded="false"> <i></i>Mensagems</a>
+          <ul class="sub-menu children dropdown-menu">
+              <li><i class="ti-arrow-circle-right"></i><a href="/all-messges">
+                Todas</a></li>
+              <li><i class="ti-arrow-circle-right"></i><a href="/readed">
+                Lidas</a></li>
+              <li><i class="ti-arrow-circle-right"></i><a href="/no-readed">
+                Não Lidas</a></li>        
+                <li><i class="ti-arrow-circle-right"></i>
+                  <a href="#" onclick="Helper.deleteReadedMessage();">
+                  Deletar Mensagens Lidas</a></li>  
+          </ul>
+        </li>
+
+        <li class="menu-item-has-children dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+          aria-expanded="false"> <i></i>Banners</a>
+          <ul class="sub-menu children dropdown-menu">
+              <li><i class="ti-arrow-circle-right"></i><a href="/all-banners">
+                Todos</a></li>
+              <li><i class="ti-arrow-circle-right"></i>
+                <a href="#" onclick="Banner.new();">
+                Novo</a></li>                      
+          </ul>
+        </li>
+
+        <!-- orders -->
+        <h3 class="menu-title"></h3>
+
+        <li class="menu-item-has-children dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+          aria-expanded="false"> <i></i>Pedidos</a>
+          <ul class="sub-menu children dropdown-menu">
+              <li><i class="ti-arrow-circle-right"></i>
+                <a href="/all-orders">
+                Todos
+              </a></li>
+              <li><i class="ti-arrow-circle-right"></i>
+                <a href="/fulfilled-orders">
+                Encerrados
+                </a></li>
+              <li><i class="ti-arrow-circle-right"></i>
+                <a href="/no-fulfilled-orders">
+                Em Andamento
+              </a></li>              
+          </ul>
+        </li>
+
+        <h3 class="menu-title"></h3><!-- /.menu-title -->
+        <li class="menu-item-has-children dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+          aria-expanded="false"> <i></i>Clientes</a>
+          <ul class="sub-menu children dropdown-menu">
+              <li><i class="fa fa-user"></i><a href="/show-users">
+                Exibir Todos</a></li>                            
+          </ul>
+        </li>
+
+        <li class="menu-item-has-children dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+          aria-expanded="false"> <i></i>Entregadores</a>
+          <ul class="sub-menu children dropdown-menu">
+              <li><i class="fa fa-user"></i>
+                <a href="#" onclick="Deliveryman.new();">
+                Novo</a></li>  
+                <li><i class="fa fa-user"></i><a href="/all-deliveryman">
+                Exibir Todos</a></li>                          
+          </ul>
+        </li> 
+        <h3 class="menu-title"></h3><!-- /.menu-title --> 
+        <li class="menu-item">
+          <a href="/" class="sub-menu">
+            <i class="fa fa-reply-all" aria-hidden="true" style="margin-right: 5px;"></i> Ir Para O Site</a> 
+        </li>
+        
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+</aside><!-- /#left-panel -->

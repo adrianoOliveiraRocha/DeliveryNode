@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LMarket - Admin</title>
+    <meta name="description" content="Web Delivery 1.1 Admin">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%-include('include/top-links.ejs')%>
+
+  </head>
+  <body>
+
+    <div class="container" style="margin: 10px;">
+      <table class="table"
+      style="font-size: <%=fontSize%>">
+        <tr>
+          <th>Logradouro</th>
+          <td><%=data.publicPlace%></td>
+        </tr>
+        <tr>
+          <th>Número</th>
+          <td><%=data.number%></td>
+        </tr>
+        <tr>
+          <th>Bairro</th>
+          <td><%=data.neighborhood%></td>
+        </tr>
+        <tr>
+          <td id="buttonContainer">
+
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <%-include('include/bottom-links.ejs')%>
+
+    <script>
+
+      setTimeout(function() {
+        var buttonContainer = document.getElementById('buttonContainer');
+        buttonContainer.innerHTML = '<button class="btn btn-info" onclick="window.history.go(-1); return false;">'
+        +'Voltar</button>';
+      }, 0);
+
+      print();
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Perfil</h3></div>
+  <div class="card-body card-block">
+    <form action="/update-deliveryman-profile" method="post" id="profileForm"
+      enctype="multipart/form-data">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Nome</div>
+          <input type="text" id="name" name="name" placeholder="Nome" 
+          class="form-control" value="<%=user.name%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Email</i></div>
+          <input required type="email" id="email" name="email" placeholder="Email" 
+          class="form-control" value="<%=user.email%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Telefone</i></div>
+          <input type="text" id="phone" name="phone" 
+            onkeyup="Helper.fixPhone(this.value);" 
+            placeholder="Telefone/WhatsApp" 
+            class="form-control" value="<%=user.phone%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Senha</i></div>
+          <input type="password" id="pwd" name="pwd" placeholder="Senha" 
+          class="form-control" value="<%=user.pwd%>" required>
+          <button class="btn btn-ligth"
+          onclick="Helper.seePwd(event);" id="buttonSeePwd">
+            Exibir Senha</button>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="card text-center">
+          <div class="card-header">
+            <strong class="card-title mb-3">Imagem</strong>
+          </div>
+          <div class="card-body">
+            <div class="mx-auto d-block">
+              <img class="mx-auto d-block" 
+              src="
+              <% if(user.imageName) {%>
+                /admin/images/user/<%=user.imageName%>
+              <% } else { %>
+                /admin/images/user/default.png
+              <% } %>
+              " 
+              alt="User image" width="150px">
+            </div>
+            <hr>
+            <div class="card-text text-sm-center">
+              <input type="file" placeholder="test" name="profileImage"
+                value="Atualizar Imagem"  
+                title="Escolha uma imagem para substituir">                      
+            </div>
+          </div>
+      </div>
+      
+      <div class="form-actions form-group">
+
+        <div class="row">
+          <div class="col-sm-3">
+            <button type="button" class="form-control btn btn-info"
+              onclick="Deliveryman.updateProfile(event)">Atualizar</button>
+          </div>
+          <div class="col-sm-3">
+            <button type="button" class="form-control btn btn-warning"
+              onclick="return document.location.href='/deliveryman'">Cancelar</button>
+          </div>
+        </div>   
+
+      </div>
+
+    </form>
+  </div>
+</div>

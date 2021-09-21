@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Editar Colaborador</h3></div>
+  <div class="card-body card-block">
+
+    <form action="/edit-deliveryman" method="post" id="deliverymanForm">
+
+      <input type="hidden" name="id" value="<%=deliveryman.id%>">
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Nome</div>
+          <input type="text" id="name" name="name" 
+            class="form-control" value="<%=deliveryman.name%>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Email</div>
+          <input type="email" id="email" name="email" 
+            class="form-control" value="<%=deliveryman.email%>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Senha</i></div>
+          <input type="password" id="pwd" name="pwd" 
+          class="form-control" value="<%=deliveryman.pwd%>" required>
+          <button class="btn btn-ligth"
+          onclick="Helper.seePwd(event);" id="buttonSeePwd">
+            Exibir Senha</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">CPF</div>
+          <input type="text" id="cpf" name="cpf" 
+          placeholder="Somente números..."  
+          class="form-control" value="<%=deliveryman.cpf%>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Phone</div>
+          <input type="text" id="phone" name="phone" 
+            class="form-control" value="<%=deliveryman.phone%>">
+        </div>
+      </div>
+
+      <div class="form-actions form-group">
+        <div class="row">
+          <div class="col-sm-3">
+            <button type="button" class="form-control btn btn-info"
+              onclick="Deliveryman.edit()">Editar</button>
+          </div>   
+          <div class="col-sm-3">
+            <button type="button" class="form-control btn btn-danger"
+              onclick="Deliveryman.delete('<%=deliveryman.id%>')">Deletar</button>
+          </div>   
+        </div>        
+      </div>
+      
+    </form>
+  </div>
+</div>

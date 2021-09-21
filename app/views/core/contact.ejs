@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>LMarket</title>
+
+  <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body onload="ShopingCart.verify();">
+  <div class="container-fluid">
+
+    <!-- Navigation -->
+    <%-include('include/nav-bar.ejs')%>
+
+    <br>
+    <div class="card">
+      
+      <div class="card-head">
+        <h2 class="title">Contato</h2>
+      </div>
+
+      <div class="card-body">
+        
+        <div class="container" id="variableContent">
+
+          <div class="card c3">
+
+            <div class="card-body">
+              <div id="errorsContainer"></div>
+              <form class="form" action="/send-message" method="post"
+              id="formMessage">
+                <!-- name -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="name" class="form-control text-center c2">Nome</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="name" 
+                    id="name" required>
+                  </div>
+                </div>
+                <hr>
+                <!-- email -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="email" class="form-control text-center c2">Email</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" name="email"
+                    id="email" required>
+                  </div>
+                </div>
+                <hr>
+                <!-- phone -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="phone" class="form-control text-center c2">Telefone</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" name="phone"
+                    id="phone" onkeyup="Helper.fixPhone(this.value)">
+                  </div>
+                </div>
+                <hr>
+                <!-- phone -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="message" class="form-control text-center c2">Mensagem</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <textarea name="message" class="form-control" 
+                    id="message" required></textarea>
+                  </div>
+                </div>
+                <hr>
+                <!-- phone -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <button type="button" class="add-cart-button form-control"
+                      onclick="Message.sendMessage(event)">
+                      Enviar <i class='far fa-paper-plane'></i>
+                    </button>
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="add-cart-button form-control"
+                      onclick="return window.location.href='/'">
+                      Cancelar <i class='far fa-window-close'></i>
+                    </button>
+                  </div>
+                </div>
+                
+              </form>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <%-include('include/bottom-links.ejs')%>
+
+    <a href="/user-whatsapp-message"" title="Fale Conosco" class="wa-logo">
+      <img src="admin/images/whatsapp.png" alt="whatsapp image" width="50px">
+    </a>
+
+  </div>
+
+  <br>
+  
+  <%-include('include/footer.ejs')%>
+  <script src="core/core.js"></script>
+</body>
+
+</html>

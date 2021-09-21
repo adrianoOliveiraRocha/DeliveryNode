@@ -1,0 +1,112 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Detalhes do Usuário</h3></div>
+  <div class="card-body card-block">
+    
+    <input type="hidden" name="id" value="<%=user.id%>">
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Código</div>
+        <input type="text" 
+          class="form-control" readonly 
+          name="name" value="<%=user.id%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Nome</div>
+        <input type="text" 
+          class="form-control" readonly 
+          name="name" value="<%=user.name%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Email</div>
+        <input type="email" class="form-control" readonly 
+          name="email" value="<%=user.email%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">CPF</div>
+        <input type="cpf" class="form-control" readonly 
+          name="cpf" value="<%=user.cpf%>">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Data de Nascimento</div>
+        <input type="birthday" class="form-control" readonly 
+          name="birthday" value="<%=birthday%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Telefone</div>
+        <input type="phone" class="form-control" readonly 
+          name="phone" value="<%=user.phone%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Logradouro</div>
+        <input type="text" class="form-control" readonly 
+          name="street" value="<%=user.street%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Número</div>
+        <input type="number" class="form-control" readonly 
+          name="_number" value="<%=user._number%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Bairro</div>
+        <input type="text" class="form-control" readonly 
+          name="neighborhood" value="<%=user.neighborhood%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Complemento</div>
+        <textarea name="complement" 
+        readonly class="form-control"><%=user.complement%></textarea>
+      </div>
+    </div>
+
+    <div class="form-actions form-group">
+      <div class="row">
+        <div class="col-sm-3">
+          <button type="button" class="add-cart-button form-control btn btn-wapp-color"
+            onclick="return document.location.href='/send-wapp-message?clientName=<%=user.name%>&clientPhone=<%=user.phone%>'">
+            Enviar Mensagem</button>
+        </div>
+        <div class="col-sm-3">
+          <button type="button" class="add-cart-button form-control btn btn-info"
+            onclick="User.getOrderHistory('<%=user.id%>', '<%=user.name%>');">
+            Histórico de Pedidos</button>
+        </div>
+      </div>
+      
+      
+    </div>
+      
+   
+  </div>
+</div>
+
+
+
+

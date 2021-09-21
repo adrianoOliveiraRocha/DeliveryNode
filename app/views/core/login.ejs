@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- pwa -->
+  <!-- <link rel="manifest" href="./manifest.json">
+  <script src="./app.js"></script> -->
+
+  <title>LMarket</title>
+
+  <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body onload="ShopingCart.verify();">
+  <div class="container-fluid">
+
+    <!-- Navigation -->
+    <%-include('include/nav-bar.ejs')%>
+
+    <br>
+    <div class="card">
+      
+      <div class="card-head">
+        <h2 class="title">Login</h2>
+      </div>
+
+      <div class="card-body">
+        
+        <div class="container">
+          <% if(message) { %>
+          <div class="alert alert-info"><%=message%></div>
+          <% } %>
+          <div class="card c3">
+
+            <div class="card-body" id="variableContent">
+
+              <form class="form" action="/login" 
+                method="post" id="loginForm">
+                <!-- email -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="email" class="form-control text-center c2">Email</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" name="email" required
+                      id="email">
+                  </div>
+                </div>
+                <hr>
+                <!-- phone -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="pwd" class="form-control text-center c2">Senha</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="password" class="form-control" name="pwd" required 
+                    id="pwd">
+                  </div>
+                </div>
+                <hr>
+                <br>
+                
+                <div class="row">
+                  <div class="col-sm-3">
+                    <button type="submit" class="add-cart-button form-control">
+                      Logar-se
+                    </button>
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="add-cart-button form-control"
+                      onclick="return location.href='/register'">
+                      Criar Minha Conta
+                    </button>
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="add-cart-button form-control"
+                      onclick="return window.location.href='/';">
+                      Voltar 
+                    </button>
+                  </div>
+                </div>
+                
+              </form>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <%-include('include/bottom-links.ejs')%>
+
+    <a href="/user-whatsapp-message"" title="Fale Conosco" class="wa-logo">
+      <img src="admin/images/whatsapp.png" alt="whatsapp image" width="50px">
+    </a>
+
+  </div>
+
+  <br>
+  
+  <%-include('include/footer.ejs')%>
+
+  <script src="core/core.js"></script>
+</body>
+
+</html>

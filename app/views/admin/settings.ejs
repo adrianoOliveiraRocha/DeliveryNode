@@ -1,0 +1,92 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Configurações</h3></div>
+  <div class="card-body card-block">
+
+    <hr>
+    <div class="row">
+
+      <div class="col-sm-3">
+        <p class="text-center">
+          <strong>Logo da Empresa</strong>
+        </p>
+      </div>
+      <div class="col-sm-6">
+
+        <div class="card" style="width:300px">
+          <img class="card-img-top" 
+          src="/core/images/system-images/<%=config.logoName%>" 
+          alt="Imagem">
+          <div class="card-body">
+            <input type="file">
+          </div>
+        </div>
+        
+      </div> 
+
+      <div class="col-sm-3">
+        <button class="btn btn-primary">Editar</button>
+      </div> 
+      
+    </div> 
+    <hr>
+
+    <hr>
+    <div class="row">
+
+      <div class="col-sm-3">
+        <p class="text-center">
+          <strong>WhatsApp da Empresa</strong>
+        </p>
+      </div>
+      <div class="col-sm-6">
+
+        <div class="card" style="width:300px">
+          <div class="card-body">
+            <input type="text" id="phone" onkeyup="Helper.fixPhone(this.value);" 
+            placeholder="WhatsApp com DDD"
+            value="<%=config.companyPhone.replace('55', '');%>">
+          </div>
+        </div>
+        
+      </div> 
+
+      <div class="col-sm-3">
+        <button class="btn btn-primary"
+        onclick="Admin.changePhone();">Editar</button>
+      </div> 
+      
+    </div> 
+    <hr>
+
+    <div class="row">
+
+      <div class="col-sm-3">
+        <p class="text-center">
+          <strong>Tamanho da Fonte Para Impressão</strong>
+        </p>
+      </div>
+      <div class="col-sm-6">
+
+        <div class="card" style="width:300px">
+          <div class="card-body">
+            <input type="number" id="fontSize"  
+            value="<%=config.fontSize%>">
+          </div>
+        </div>
+        
+      </div> 
+
+      <div class="col-sm-3">
+        <button class="btn btn-primary"
+        onclick="Admin.changeFontSize();">Editar</button>
+      </div> 
+      
+    </div> 
+    <hr>
+
+  </div>
+</div>
+
+
+
+

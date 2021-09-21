@@ -1,0 +1,70 @@
+<%
+const numberOfPages = pagination.getNumberOfPages(totalOfProducts);
+const leftSide = pagination.getLeftSide(pageNumber);
+const rigthSide = pagination.getRightSide(pageNumber, numberOfPages); 
+%>
+
+<ul class="pagination justify-content-center" style="margin:20px 0">
+
+  <li class="page-item">
+    <a class="page-link c2" 
+      href="?page=<%=pageNumber-1%><%=pagination.sendCategory(categoryId)%>" 
+      aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+      <span class="sr-only">Previous</span>
+    </a>
+  </li>
+
+  <%if(leftSide.explode) { %>
+    <li class="page-item"">
+      <a class="page-link c2" 
+        href="#">...</a>
+    </li>
+  <% } %>
+  
+  <% for(lb of leftSide.leftButtons) { %>
+    <li class="page-item"">
+      <a class="page-link c2" 
+        href="?page=<%=lb%><%=pagination.sendCategory(categoryId)%>"><%=lb%></a>
+    </li>
+  <% } %>
+
+  <li class="page-item">
+    <a class="page-link c2 myactive" 
+      href="?page=<%=pageNumber%><%=pagination.sendCategory(categoryId)%>"><%=pageNumber%></a></li>
+
+  <% for(rb of rigthSide.rightButtons) { %>
+    <li class="page-item"">
+      <a class="page-link c2" 
+        href="?page=<%=rb%><%=pagination.sendCategory(categoryId)%>"><%=rb%></a>
+    </li>
+  <% } %>
+  
+  <%if(rigthSide.explode) { %>
+    <li class="page-item"">
+      <a class="page-link c2" 
+        href="#">...</a>
+    </li>
+  <% } %>
+
+  <li class="page-item">
+    <a class="page-link c2" 
+      href="?page=<%=parseInt(pageNumber)+1%><%=pagination.sendCategory(categoryId)%>" 
+      aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+      <span class="sr-only">Next</span>
+    </a>
+  </li>
+
+
+</ul>
+
+<!-- 
+<p><%if(leftSide.explode) { %>...<% } %></p>
+<p><%=leftSide.leftButtons%></p>
+<p><%=pageNumber%></p>
+<p><%=rigthSide.rightButtons%></p>
+<p><%if(rigthSide.explode) { %>...<% } %></p> -->
+
+
+

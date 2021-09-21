@@ -1,0 +1,105 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Detalhes da Entrega</h3></div>
+  <div class="card-body card-block">    
+    
+    <input type="hidden" value="<%=delivery.id%>" name="deliveryId">
+    <input type="hidden" value="<%=delivery.user%>" name="user">
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Código do Pedido</div>
+        <input type="text" readonly
+        class="form-control" value="<%=delivery.orderId%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Cliente</div>
+        <input type="text" readonly
+        class="form-control" value="<%=delivery.clientName%>">
+      </div>
+    </div>
+
+    <%if(delivery.creditCard != 'undefined') { %>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Cartão</div>
+        <input type="text" readonly
+        class="form-control" value="<%=delivery.creditCard%>">
+      </div>
+    </div>
+    <% } %>
+
+    <%if(delivery.money != 'undefined') { %>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Dinheiro</div>
+        <input type="text" readonly
+        class="form-control" value="<%=delivery.money%>">
+      </div>
+    </div>
+    <% } %>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Total</div>
+        <input type="text" readonly
+        class="form-control" value="<%=delivery.total%>">
+      </div>
+    </div>
+
+    <%if(delivery.rest != 'undefined') { %>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Troco</div>
+        <input type="text" readonly
+        class="form-control" value="<%=delivery.rest%>">
+      </div>
+    </div>
+    <% } %>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Logradouro</div>
+        <input type="text" readonly
+        class="form-control" value="<%=delivery.publicplace%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Número</div>
+        <input type="text" readonly
+        class="form-control" value="<%=delivery._number%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Bairro</div>
+        <input type="text" readonly
+        class="form-control" value="<%=delivery.neighborHood%>">
+      </div>
+    </div>
+
+    <div class="form-actions form-group">
+      <div class="row">
+
+        <div class="col-sm-3">
+          <button type="button" class="form-control btn btn-danger"
+          onclick="Deliveryman.cancelDelivery('<%=delivery.id%>', '<%=delivery.orderId%>');">
+            Cancelar
+          </button>
+        </div> 
+
+      </div>
+      
+    </div>    
+
+  </div>
+</div>
+
+
+
+

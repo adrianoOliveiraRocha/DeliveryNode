@@ -1,0 +1,152 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Editar Produto</h3></div>
+  <div class="card-body card-block">
+    <form action="/edit-product" method="post" id="productForm">
+      <input type="hidden" name="id" value="<%=product.id%>" id="id">
+      <input type="hidden" name="imageName" value="<%=product.imageName%>">
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Nome</div>
+          <input type="text" id="name" name="name"
+            placeholder="Nome da categorira" class="form-control"
+            name="name" value="<%=product.name%>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Código de barras</div>
+          <input type="text" id="barcode" name="barcode"
+            placeholder="Código de Barras" class="form-control"
+            name="name" value="<%=product.barcode%>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Descrição</div>
+          <textarea name="description"
+          id="description" class="form-control"><%=product.description%></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Preço</div>
+          <input type="text" id="price" name="price"
+            placeholder="Preço" class="form-control"
+            value="<%=product.price.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})%>"
+            onkeyup="Helper.fixPrice(this, event)">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Controle de Estoque</div>
+          <select name="stockControl" id="stockControl" class="form-control"
+            onchange="Product.performStockControl(this.value);">            
+            <option value="1" <% if(product.stock_control==1) { %> selected="selected" <% } %> >
+              Sim</option>
+            <option value="0" <% if(product.stock_control==0) { %> selected="selected" <% } %> >
+              Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Estado</div>
+          <select name="state" id="state" class="form-control">            
+            <option value="1" <% if(product.activated==1) { %>selected="selected"<% } %>>
+              Ativo</option>
+            <option value="0" <% if(product.activated==0) { %>selected="selected"<% } %>>
+              Inativo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group" id="controlStockDependence"
+      <% if(product.stock_control==0) { %> hidden <% } %>>
+        <div class="input-group">
+          <div class="input-group-addon">Quantidade</div>
+          <input type="number" id="quantity" name="quantity"
+            class="form-control" min="0" readonly
+            value="<%=product.quantity%>">
+        </div>
+      </div>
+
+      <div class="form-group" id="units"
+      <% if(product.stock_control==0) { %> hidden <% } %>>
+        <div class="input-group">
+          <div class="input-group-addon">Adicionar Unidades</div>
+          <input type="number" name="units" min="0"
+            placeholder="Unidades" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Categoria</div>
+          <select name="category" id="category" class="form-control">
+            <% categories.forEach(category => { %>
+              <% if(product.category == category.id) {%>
+              <option value="<%=category.id%>" selected>
+                <%=category.name%>
+              </option>
+              <% } else { %>
+                <option value="<%=category.id%>">
+                  <%=category.name%>
+                </option>
+              <% } %>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="card text-center">
+          <div class="card-header">
+            <strong class="card-title mb-3">Imagem</strong>
+          </div>
+          <div class="card-body">
+            <div class="mx-auto d-block">
+              <img class="mx-auto d-block" src="/admin/images/products/<%=product.imageName%>%>"
+                alt="Product image" width="200px">
+            </div>
+            <hr>
+            <div class="card-text text-sm-center">
+              <input type="file" name="productImage">
+            </div>
+          </div>
+      </div>
+
+      <div class="form-actions form-group">
+        <div class="row">
+
+          <div class="col-sm-3">
+
+            <button type="button" class="add-cart-button form-control btn btn-info"
+              onclick="Product.editProduct()">Editar</button>
+                     
+          </div>
+
+          <div class="col-sm-3">
+            <% if(product.activated == 1) {%>
+            <button type="button" class="add-cart-button form-control btn btn-warning"
+              onclick="Product.deactivate('<%product.id%>')">Desativar</button>
+            <% } else { %>
+            <button type="button" class="add-cart-button form-control btn btn-info"
+              onclick="Product.activate('<%product.id%>')">Ativar</button>
+            <% } %>
+          </div>
+      
+        </div>
+        
+        
+        
+      </div>
+
+    </form>
+  </div>
+</div>

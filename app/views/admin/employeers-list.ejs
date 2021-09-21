@@ -1,0 +1,19 @@
+<div class="card">
+  
+  <input type="hidden" value="<%=deliveryAdrress.publicPlace%>" id="publicPlace">
+  <input type="hidden" value="<%=deliveryAdrress._number%>" id="_number">
+  <input type="hidden" value="<%=deliveryAdrress.neighborhood%>" id="neighborhood">
+
+  <div class="card-header text-center"><h3>Colaboradores</h3></div>
+  <div class="card-body card-block">
+    <% for(employeer of employeers) { %>
+      <div class="card">
+        <div class="card-body">
+          <a href="#" onclick="Employee.sendAddress('<%=employeer.phone%>');" 
+          class="text-info"><%=employeer.name%></a>
+        </div>
+      </div>
+    <% } %>
+  </div>
+  
+</div>

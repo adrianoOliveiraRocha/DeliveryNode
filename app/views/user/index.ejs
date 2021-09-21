@@ -1,0 +1,59 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LMarket - Cliente</title>
+    <meta name="description" content="Delivery">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body>
+
+	<%-include('include/left-panel.ejs')%>
+
+	<!-- Left Panel -->
+
+	<!-- Right Panel -->
+
+	<div id="right-panel" class="right-panel">
+
+		<%-include('include/header.ejs')%>
+		<!-- main content -->		
+		<div class="content mt-3">
+
+			<% if(message) { %>
+			<div class="alert alert-success alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Enviado com sucesso!</strong> 
+			</div>
+			<% } %>
+
+			<div id="variableContent"></div>
+			
+			<!-- <a href="/user-whatsapp-message"" title="Fale Conosco" class="wa-logo">
+				<img src="admin/images/whatsapp.png" alt="whatsapp image" width="50px">
+			</a> -->
+
+		</div> <!-- /main content -->		
+
+	</div><!-- /#right-panel -->
+
+	<!-- Right Panel -->
+
+	<%-include('include/bottom-links.ejs')%>
+
+	<script src="admin/user.js"></script>
+	
+</body>
+
+</html>

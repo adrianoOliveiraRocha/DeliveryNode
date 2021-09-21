@@ -1,0 +1,41 @@
+<% if(Object.keys(banners).length > 0) {%>
+
+<div class="container text-center">
+
+  <div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    
+    <ul class="carousel-indicators">
+    <% for(let i = 0; i < Object.keys(banners).length; i++) { %>
+      <li data-target="#demo" data-slide-to="<%=i%>" 
+        class="<%if(i == 0) { %> active <% } %>">
+      </li>      
+    <% } %>
+    </ul>
+    
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <% for(let i = 0; i < Object.keys(banners).length; i++) { %>
+      <div class="
+      <%if(i == 0) { %> carousel-item active <% } else {%> carousel-item <%} %>
+      ">
+        <img src="admin/images/banners/<%=banners[i].name%>" alt="offline">
+      </div>
+      <% } %>      
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+
+  </div>
+
+</div>
+
+
+<% } %>

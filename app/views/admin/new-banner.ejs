@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Novo Banner</h3></div>
+  <div class="card-body card-block">
+    <form action="/new-banner" method="post" id="bannerForm"
+    enctype="multipart/form-data">
+      
+      <div class="form-group">
+        <div class="input-group">
+          <!-- <div class="input-group-addon">Nome</div> -->
+          <input type="file" id="banner" name="banner" 
+            class="form-control">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <button type="button" class="form-control btn btn-info"
+          onclick="Banner.saveBanner();">Salvar</button>
+        </div>
+        <!-- <div class="col-sm-3">
+          <button type="button" class="form-control btn btn-warning"
+            onclick="return document.location.href='/admin'">Cancelar</button>
+        </div> -->
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+
+
+

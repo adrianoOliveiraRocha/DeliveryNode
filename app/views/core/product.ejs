@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>LMarket</title>
+
+  <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body onload="ShopingCart.verify();">
+  <div class="container-fluid">
+    <!-- Navigation -->
+    <%-include('include/nav-bar.ejs')%>
+    <br>
+    <div class="card">
+
+      <div class="card-head">
+        <h2 class="title">Detalhes do Produto</h2>
+      </div>
+      <input type="hidden" id="name_<%=product.id%>" value="<%=product.name%>">
+      <input type="hidden" id="price_<%=product.id%>" value="<%=product.price%>">
+      <input type="hidden" id="stock_<%=product.id%>" value="<%=product.quantity%>">
+      <input type="hidden" id="stockControl_<%=product.id%>" value="<%=product.stock_control%>">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3 text-center">
+            <img src="admin/images/products/<%=product.imageName%>" width="250px" alt="produto">
+          </div>
+
+          <div class="col-sm-9">
+            <hr>
+            <div class="container">
+              <h3 class="title"><%=product.name%></h3>
+              <p class="card-text text-muted">
+                <%=product.description%>
+              </p>
+              <h4 class="c2">R$ <%=product.price.toFixed(2).toString().replace('.', ',')%></h4>
+              <br>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <button type="submit" class="add-cart-button form-control"
+                    onclick="ShopingCart.insertProduct('<%=product.id%>')"
+                    id="btnInsert_<%=product.id%>">
+                    Adicionar ao Carrinho <i class="fas fa-cart-plus"></i>
+                  </button>
+                </div>
+                <div class="col-sm-3">
+                  <button type="button" class="add-cart-button form-control"
+                    onclick="return window.location.href='/';">
+                    Voltar
+                  </button>
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <%-include('include/bottom-links.ejs')%>
+
+    <a href="/user-whatsapp-message"" title="Fale Conosco" class="wa-logo">
+      <img src="admin/images/whatsapp.png" alt="whatsapp image" width="50px">
+    </a>
+    
+  </div>
+
+  <br>
+  <%-include('include/footer.ejs')%>
+  <script src="core/core.js"></script>
+</body>
+
+</html>

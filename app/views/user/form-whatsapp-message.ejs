@@ -1,0 +1,73 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LMarket - Cliente</title>
+    <meta name="description" content="Web Delivery 1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%-include('include/top-links.ejs')%>
+    
+
+</head>
+
+<body>
+  <%-include('include/left-panel.ejs')%>
+
+  <div class="content" id="right-panel" class="right-panel">
+    <%-include('include/header.ejs')%>
+    <div class="content mt-3">
+      <div id="variableContent">
+        <h2 class="text-center wapp-color">
+          Mensagem <span class="fab fa-whatsapp"></span></h2>
+        <hr>
+        <form action="/send-user-whatsapp-message" method="POST">
+          <input type="hidden" value="<%=orderId%>" name="orderId">
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="name" class="form-control">Telefone</label>
+            </div>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="phone" 
+              value="<%=user.phone%>">
+            </div>  
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="" class="form-control">Mensagem</label>
+            </div>
+            <div class="col-sm-9">
+              <textarea name="message" class="form-control"></textarea>
+            </div>  
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+            <button type="submit" class="btn btn-primary btn-wapp-color">
+              Enviar
+            </button>
+            </div>          
+          </div>
+          <hr>
+        </form>
+      </div>
+    </div>
+    
+
+  </div>
+
+	<%-include('include/bottom-links.ejs')%>
+
+	<script src="admin/user.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Detalhes da Mensagem</h3></div>
+  <div class="card-body card-block">    
+    
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Nome</div>
+        <input type="text" readonly
+        class="form-control" value="<%=message.name%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Email</i></div>
+        <input type="email" readonly 
+        class="form-control" value="<%=message.email%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Telefone</i></div>
+        <input type="text" readonly
+        class="form-control" value="<%=message.phone%>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Mensagem</i></div>
+        <textarea class="form-control" readonly><%=message.message%></textarea>        
+      </div>
+    </div>
+    
+    <div class="form-actions form-group">
+      <div class="row">
+
+
+        <%if(message._read == 0) { %>
+        <div class="col-sm-3">
+          <button type="button" class="form-control btn btn-info"
+            title="Marcar como lida"
+            onclick="Helper.changeMessageStatus('<%=message.id%>', 1)">
+              Marcar como Lida
+          </button>
+        </div>        
+        <% } else { %>
+        <div class="col-sm-3">
+          <button type="button" class="form-control btn btn-info"
+          title="Marcar como não lida"
+          onclick="Helper.changeMessageStatus('<%=message.id%>', 0)">
+            Marcar Como Não Lida</button>
+        </div>        
+        <% } %>
+        <div class="col-sm-3">
+        <button type="button" class="form-control btn btn-danger"
+        onclick="Helper.deleteMessage('<%=message.id%>');">
+          Deletar</button>
+        </div>
+          
+      </div>
+      
+    </div>    
+
+  </div>
+</div>
+
+
+
+

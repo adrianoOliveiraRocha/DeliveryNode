@@ -1,0 +1,132 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Perfil</h3></div>
+  <div class="card-body card-block">
+    <form action="/update-user-profile" method="post" id="profileForm"
+      enctype="multipart/form-data">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Nome</div>
+          <input type="text" id="name" name="name" placeholder="Nome" 
+          class="form-control" value="<%=user.name%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Email</i></div>
+          <input required type="email" id="email" name="email" placeholder="Email" 
+          class="form-control" value="<%=user.email%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">CPF</i></div>
+          <input required type="number" id="cpf" name="cpf" placeholder="Somente Números" 
+          class="form-control" value="<%=user.cpf;%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Data de  Nascimento</i></div>
+          <input required type="text" id="birthday" name="birthday" placeholder="DD/MM/AAAA" 
+            class="form-control" value="<%=birthday;%>" 
+            onkeypress="Helper.fixDate(this.value);" maxlength="10">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Telefone</i></div>
+          <input type="text" id="phone" name="phone" 
+            onkeyup="Helper.fixPhone(this.value);" 
+            placeholder="Telefone/WhatsApp" 
+            class="form-control" value="<%=user.phone%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Senha</i></div>
+          <input type="password" id="pwd" name="pwd" placeholder="Senha" 
+          class="form-control" value="<%=user.pwd%>" required>
+          <button class="btn btn-ligth"
+          onclick="Helper.seePwd(event);" id="buttonSeePwd">
+            Exibir Senha</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Rua</div>
+          <input type="text" id="street" name="street" placeholder="Rua" 
+          class="form-control" value="<%=user.street%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Número</div>
+          <input type="text" id="_number" name="_number" placeholder="Número" 
+          class="form-control" value="<%=user._number%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Bairro</div>
+          <select name="neighborhood" id="neighborhood" class="form-control">
+            <%for(nh of neighborhoods) { %>
+            <% if(nh.id == user.neighborhood) { %>
+            <option value="<%=nh.id%>" selected><%=nh.name%></option>
+            <% } else { %>
+            <option value="<%=nh.id%>"><%=nh.name%></option>
+            <% } %>
+            <% } %>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Complemento</div>
+          <textarea name="complement" id="complement"
+          class="form-control"><%=user.complement%></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="card text-center">
+          <div class="card-header">
+            <strong class="card-title mb-3">Imagem</strong>
+          </div>
+          <div class="card-body">
+            <div class="mx-auto d-block">
+              <img class="mx-auto d-block" 
+              src="
+              <% if(user.imageName) {%>
+                /admin/images/user/<%=user.imageName%>
+              <% } else { %>
+                /admin/images/user/default.png
+              <% } %>
+              " 
+              alt="User image" width="150px">
+            </div>
+            <hr>
+            <div class="card-text text-sm-center">
+              <input type="file" placeholder="test" name="profileImage"
+                value="Atualizar Imagem"  
+                title="Escolha uma imagem para substituir">                      
+            </div>
+          </div>
+      </div>
+      
+      <div class="form-actions form-group">
+
+        <div class="row">
+          <div class="col-sm-3">
+            <button type="button" class="form-control btn btn-info"
+              onclick="User.updateProfile(event)">Atualizar</button>
+          </div>
+          <div class="col-sm-3">
+            <button type="button" class="form-control btn btn-warning"
+              onclick="return document.location.href='/user'">Cancelar</button>
+          </div>
+        </div>   
+
+      </div>
+
+    </form>
+  </div>
+</div>

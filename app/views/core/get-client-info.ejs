@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>LMarket</title>
+
+  <script>
+    function noComeBackButton() { 
+
+      window.onbeforeunload = function() {
+        function setNoBackButton() {
+          window.location.hash="no-back-button";
+          window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+          window.onhashchange=function(){window.location.hash="no-back-button";};
+          console.log("call setNoBackButton is true");  
+        }
+      }
+
+    }
+  </script>
+
+  <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body onload="ShopingCart.verify(); 
+  User.isitLoged('<%=loged%>');">
+  <div class="container-fluid">
+
+    <!-- Navigation -->
+    <%-include('include/nav-bar.ejs')%>
+
+    <br>
+    <div class="card">
+      
+      <div class="card-head">
+        <h2 class="title">Finalizar Pedido</h2>
+      </div>
+
+      <div class="card-body">
+        
+        <div class="container">
+
+          <div class="card c3">
+
+            <div class="card-body" id="variableContent">
+
+              <form class="form" action="/order-login" 
+                method="post" id="getClientInfoForm">
+                <!-- email -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="email" class="form-control text-center c2">Email</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" name="email" id="email"
+                    value="<% if(user) { %><%=user.email%><% } %>">
+                  </div>
+                </div>
+                <hr>
+                <!-- phone -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="pwd" class="form-control text-center c2">Senha</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="password" class="form-control" name="pwd"
+                    value="<% if(user) { %><%=user.pwd%><% } %>">
+                  </div>
+                </div>
+                <hr>
+                <hr>
+                <!-- phone -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <button type="button" class="add-cart-button form-control"
+                      name="sendMessage" onclick="Order.orderLogin();"
+                      id="isItLoged">
+                      Logar-se
+                    </button>
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="add-cart-button form-control"
+                      name="sendMessage" onclick="return window.location.href='/register'">
+                      Criar Minha Conta
+                    </button>
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="add-cart-button form-control"
+                      name="sendMessage" 
+                      onclick="return window.location.href='/';">
+                      Voltar 
+                    </button>
+                  </div>
+                </div>
+                
+              </form>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <%-include('include/bottom-links.ejs')%>
+
+  </div>
+
+  <br>
+  
+  <%-include('include/footer.ejs')%>
+
+  <script src="core/core.js"></script>
+</body>
+
+</html>

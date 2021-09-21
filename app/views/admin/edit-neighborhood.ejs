@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-header text-center"><h3>Editar Bairro</h3></div>
+  <div class="card-body card-block">
+    <form action="/edit-neighborhood" method="post" id="neighborhoodForm">
+      <input type="hidden" name="id" value="<%=neighborhood.id%>">
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Nome</div>
+          <input type="text" id="name" name="name"
+            placeholder="Nome da categorira" class="form-control"
+            name="name" value="<%=neighborhood.name%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Taxa de Entrega</div>
+          <input type="text" id="deliveryFee" name="deliveryFee"
+            placeholder="Nome da categorira" class="form-control"
+            name="name" 
+            value="<%=neighborhood.delivery_fee.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})%>"
+            onkeyup="Helper.fixPrice(this, event)">
+        </div>
+      </div>
+
+      <div class="form-actions form-group">
+
+        <div class="row">
+          <div class="col-sm-3">
+            <button type="button" class="form-control btn btn-info"
+              onclick="Neighborhood.edit()">Editar</button>
+          </div>
+          <% if(neighborhood.activated == 1) { %>
+          <div class="col-sm-3">
+            <button type="button" class="form-control btn btn-warning"
+              onclick="Neighborhood.deactivate('<%=neighborhood.id%>')">Desativar</button>
+          </div>          
+          <% } else { %>
+          <div class="col-sm-3">
+            <button type="button" class="form-control btn btn-warning"
+              onclick="Neighborhood.activate('<%=neighborhood.id%>')">Ativar</button>
+          </div>          
+          <% } %>
+        </div>
+
+        
+         
+        
+      </div>
+
+    </form>
+  </div>
+</div>

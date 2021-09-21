@@ -1,0 +1,66 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Web Delivery 1.1 Admin">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LMarket - Admin</title>
+    <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body>
+
+	<%-include('include/left-panel.ejs')%>
+
+	<!-- Left Panel -->
+
+	<!-- Right Panel -->
+
+	<div id="right-panel" class="right-panel">
+
+		<%-include('include/header.ejs')%>
+		<!-- main content -->
+		<div class="content mt-3">
+			<div id="variableContent">
+        <% if(Object.keys(banners).length > 0) { %>
+        <div class="card-columns">
+          <% for(banner of banners) { %>
+          <div class="card bg-light">
+            <div class="card-body text-center">
+              <img src="/admin/images/banners/<%=banner.name%>" alt="ofline">
+              <hr>
+              <button class="btn btn-danger"
+              onclick="Banner.delete('<%=banner.id%>', '<%=banner.name%>');">Deletar</button>
+            </div>
+          </div>          
+          <% } %>
+        </div>
+        <% } else { %>
+          <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oops!</strong> você não tem nenhum banner registrado
+          </div>
+        <% } %>
+
+			</div>
+		</div> <!-- /main content -->
+
+	</div><!-- /#right-panel -->
+
+	<!-- Right Panel -->
+
+	<%-include('include/bottom-links.ejs')%>
+
+	<script src="/admin/admin.js"></script>
+
+</body>
+
+</html>

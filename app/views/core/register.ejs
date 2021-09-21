@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>LMarket</title>
+
+  <%-include('include/top-links.ejs')%>
+
+</head>
+
+<body onload="ShopingCart.verify();">
+  <div class="container-fluid">
+
+    <!-- Navigation -->
+    <%-include('include/nav-bar.ejs')%>
+
+    <br>
+    <div class="card">
+      
+      <div class="card-head">
+        <h2 class="title">Registrar-se</h2>
+      </div>
+
+      <div class="card-body">
+        
+        <div class="container">
+
+          <div class="card c3">
+
+            <div class="card-body" id="variableContent">
+
+              <form class="form" action="/register" 
+                method="post">
+                <!--name -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="name" class="form-control text-center c2">Nome</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="name" 
+                      placeholder="Obrigatório" required id="name"> 
+                  </div>
+                </div>
+                <hr>
+                <!-- email -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="email" class="form-control text-center c2">Email</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" name="email" 
+                      placeholder="Obrigatório"  required
+                      id="email">
+                  </div>
+                </div>
+                <hr>
+                <!-- cpf -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="cpf" class="form-control text-center c2">CPF</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" name="cpf" 
+                      placeholder="Somente Números" required
+                      id="cpf">
+                  </div>
+                </div>
+                <hr>
+                <!-- birthday -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="birthday" class="form-control text-center c2">Data de Nascimento</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="birthday" maxlength="10"
+                      placeholder="DD/MM/AAAA"  id="birthday" onkeyup="Helper.fixDate(this.value);">
+                  </div>
+                </div>
+                <hr>
+                <!-- pwd -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="pwd" class="form-control text-center c2">Senha</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="password" class="form-control" name="pwd" 
+                    placeholder="Obrigatório" required 
+                    id="pwd">
+                  </div>
+                </div>
+                <hr>
+                <!-- phone -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="phone" class="form-control text-center c2">Telefone (WhatsApp)</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="phone" 
+                    id="phone" onkeyup="Helper.fixPhone(this.value);" required>
+                  </div>
+                </div>
+                <hr>
+                <!--street -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="street" class="form-control text-center c2">Logradouro</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="street" 
+                    placeholder="Obrigatório" required
+                      id="street">
+                  </div>
+                </div>
+                <hr>
+                <!--number -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="_number" class="form-control text-center c2">Número</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" name="_number" min="0"
+                    placeholder="Obrigatório" required
+                      id="_number">
+                  </div>
+                </div>
+                <hr>
+                <!--neighborhood -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="neighborhood" class="form-control text-center c2">Bairro</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <select name="neighborhood" id="neighborhood"
+                      class="form-control text-center c2" required>
+                      <% for(neh of neighborhoods) { %>
+                        <option value="<%=neh.id%>"><%=neh.name%></option>
+                      <% } %>
+                    </select>                    
+                  </div>
+                </div>
+                <hr>
+                <!--street -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="complement" class="form-control text-center c2">Complemento</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <textarea name="complement" class="form-control"></textarea> 
+                  </div>
+                </div>
+                <hr>
+                <br>
+                
+                <div class="row">
+                  <div class="col-sm-3">
+                    <button type="submit" class="add-cart-button form-control"
+                      name="sendMessage">
+                      Enviar
+                    </button>
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="add-cart-button form-control"
+                      name="sendMessage" onclick="return location.href='/login'">
+                      Já Tenho Uma Conta
+                    </button>
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="add-cart-button form-control"
+                      name="sendMessage" 
+                      onclick="return window.location.href='/';">
+                      Voltar 
+                    </button>
+                  </div>
+                </div>                
+              </form>
+              
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <%-include('include/bottom-links.ejs')%>
+
+    <a href="/user-whatsapp-message"" title="Fale Conosco" class="wa-logo">
+      <img src="admin/images/whatsapp.png" alt="whatsapp image" width="50px">
+    </a>
+
+  </div>
+
+  <br>
+  
+  <%-include('include/footer.ejs')%>
+
+  <script src="core/core.js"></script>
+</body>
+
+</html>
