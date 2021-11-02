@@ -1,4 +1,0 @@
-* Change the name: LTMarket delivery. Sistema de delivery para mercadinhos
-* Histórico e comportamento de clientes
-  uso de vouchers
-  Aniversário do cliente
