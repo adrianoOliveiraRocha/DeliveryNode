@@ -105,19 +105,11 @@ function UserFactory() {
        
       let id = data.id; data.name = data.name.trim();
 
-      if (data.birthday) {
-        if (data.birthday.length > 0) {
+      if(data.birthday) { // admin hasn't birthday
+        if (data.birthday.length > 0) { // birthday was sended
           let arrBirthday = data.birthday.split('/');
           data.birthday = arrBirthday[2] + '-' + arrBirthday[1] + '-' + arrBirthday[0];
-        } else if(data.birthday.length === 0) {
-          data.birthday = "1111-11-11";
         }        
-      }
-
-      if(!data.birthday && data.birthday.length == 0) {
-        console.log("Birthday not found");
-      } else if(data.birthday && data.birthday.length == 0) {
-        console.log("Birthday found");
       }
 
       let keys = Object.keys(data);
@@ -126,7 +118,7 @@ function UserFactory() {
         if (keys.includes('cpf')) {
           temp.push('cpf');
         }
-        if (keys.includes('birthday')) {
+        if (keys.includes('birthday') && data.birthday.length > 0) {
           temp.push('birthday');
         }
         if (keys.includes('phone')) {
