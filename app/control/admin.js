@@ -35,7 +35,7 @@ module.exports.profile = (req ,res) => {
 
 module.exports.updateProfile = (req, res) => {
   var imageSended = req.files ? true : false
-  let data = req.body
+  let data = req.body;
   data.id = req.session.user.id
   const UserFactory = require('../models/UserFactory')
   const factory = new UserFactory()
@@ -114,7 +114,8 @@ module.exports.updateProfile = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.end("Houve um problema ao tentar atualizar suas informações");
+      let msg = "Houve um problema ao tentar atualizar suas informações: " + err; 
+      res.end(msg);
     })
 
 }
@@ -209,7 +210,6 @@ module.exports.orderDetails = function(req, res) {
 
   Promise.all([getOrder(), getUserInfos(), getItems()])
     .then(([order, client, items]) => {
-      console.log(client);
       res.render('admin/order-details.ejs', {
         order, client, items, config
       });
@@ -704,7 +704,6 @@ module.exports.deleteDeliveryman = (req, res) => {
 
 module.exports.reviewDelivery = (req, res) => {
   const Delivery = require('./../models/Delivery');
-  console.log(req.query.orderId);
   Delivery.getDeliveryByOrder(req.query.orderId, (error, result) => {
     if(error) {
       var errorMessage = "Não foi possível recuperar a entrega: " + error;

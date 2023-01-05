@@ -104,13 +104,20 @@ function UserFactory() {
     user.updateProfile = function(data, callback) {
        
       let id = data.id; data.name = data.name.trim();
-      if (data.birthday !== null) {
+
+      if (data.birthday) {
         if (data.birthday.length > 0) {
           let arrBirthday = data.birthday.split('/');
           data.birthday = arrBirthday[2] + '-' + arrBirthday[1] + '-' + arrBirthday[0];
-        } else {
+        } else if(data.birthday.length === 0) {
           data.birthday = "1111-11-11";
         }        
+      }
+
+      if(!data.birthday && data.birthday.length == 0) {
+        console.log("Birthday not found");
+      } else if(data.birthday && data.birthday.length == 0) {
+        console.log("Birthday found");
       }
 
       let keys = Object.keys(data);
